@@ -1,7 +1,8 @@
-package com.arfapps.cesar_app;
+package com.arfapps.cesar_app.ui.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import com.arfapps.cesar_app.R;
 
 public class MainActivity extends AppCompatActivity {
 

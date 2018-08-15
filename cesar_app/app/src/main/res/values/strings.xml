@@ -1,3 +1,4 @@
 <resources>
-	<string name="app_name">Cesar_APP</string>
+	<string name="app_name">Baking off App</string>
+	<string name="n_carregado">não carregado</string>
 </resources>
