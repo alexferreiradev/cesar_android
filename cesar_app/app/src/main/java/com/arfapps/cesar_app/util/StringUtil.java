@@ -102,21 +102,28 @@ public final class StringUtil {
 	}
 
 	public static String replaceVectorLessMemoryWith(char[] original, String replacement, char characterToReplace) {
-		// TODO: 15/08/18
-//		char[] replacementChar = replacement.toCharArray();
-//		for (int i = 0, j = 0; j < original.length; i++) {
-//			boolean isToReplace = original[i] == characterToReplace;
-//			if (isToReplace) {
-//				newVector[j++] = replacementChar[0];
-//				for (int k = 1; k < replacementChar.length; k++) {
-//					newVector[j++] = replacementChar[k];
-//				}
-//			} else {
-//				newVector[j++] = original[i];
-//			}
-//		}
-//
-//		return String.valueOf(newVector);
-		return null;
+		char[] replacementChar = replacement.toCharArray();
+		int replacementSize = replacement.length();
+		int originalSize = original.length;
+		for (int i = originalSize - 1, j = originalSize - 1; j >= 0; i--) {
+			char currentChar = original[i];
+			if (j == originalSize - 1) {
+				if (currentChar != ' ') {
+					original[j--] = currentChar;
+				}
+			} else {
+				if (currentChar == characterToReplace) {
+					// insert replace
+					original[j--] = replacementChar[replacementSize - 1];
+					for (int k = replacementSize - 2; k >= 0; k--) {
+						original[j--] = replacementChar[k];
+					}
+				} else {
+					original[j--] = currentChar;
+				}
+			}
+		}
+
+		return String.valueOf(original);
 	}
 }
