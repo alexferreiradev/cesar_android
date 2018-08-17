@@ -75,11 +75,6 @@ public abstract class BasePresenter<ViewType extends BasePresenter.View,
 
 	public interface View {
 		/**
-		 * Inverte o atributo visible de um progressBar
-		 */
-		void setLoadProgressBarVisibility(boolean toVisible);
-
-		/**
 		 * Faz bind entre view e atributos da activity.
 		 * <p>
 		 * O presenter neste momento ainda não foi instanciado.
@@ -89,6 +84,11 @@ public abstract class BasePresenter<ViewType extends BasePresenter.View,
 		void initializeWidgets(Bundle savedInstanceState);
 
 		void initializeArgumentsFromIntent();
+
+		/**
+		 * Inverte o atributo visible de um progressBar
+		 */
+		void setLoadProgressBarVisibility(boolean toVisible);
 
 		void showErrorMsg(String msg);
 

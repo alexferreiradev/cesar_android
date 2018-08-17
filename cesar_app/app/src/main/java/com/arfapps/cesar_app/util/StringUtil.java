@@ -70,6 +70,10 @@ public final class StringUtil {
 		int totalDiff = 0;
 		int stringLength = from.length;
 		for (int i = 0; i < stringLength; i++) {
+			if (i == to.length) {
+				break;
+			}
+
 			boolean hasDifference = from[i] != to[i];
 			if (hasDifference) {
 				totalDiff++;
