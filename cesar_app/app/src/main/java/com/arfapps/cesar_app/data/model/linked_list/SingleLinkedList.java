@@ -9,6 +9,10 @@ public class SingleLinkedList<ValueType> implements LinkedList<ValueType>, Seria
 	private LinkedNode<ValueType> head;
 	private Long size;
 
+	public SingleLinkedList() {
+		this.size = 0L;
+	}
+
 	@Override
 	public LinkedNode<ValueType> getHead() {
 		return head;
@@ -17,6 +21,16 @@ public class SingleLinkedList<ValueType> implements LinkedList<ValueType>, Seria
 	@Override
 	public Long getSize() {
 		return size;
+	}
+
+	@Override
+	public void updateSize() {
+		size = 0L;
+
+		LinkedNode<ValueType> auxNode = this.head;
+		for (; auxNode != null; auxNode = auxNode.getNext()) {
+			size++;
+		}
 	}
 
 	@Override
@@ -31,13 +45,12 @@ public class SingleLinkedList<ValueType> implements LinkedList<ValueType>, Seria
 		}
 
 		LinkedNode<ValueType> node = createNode(value);
-		LinkedNode<ValueType> nodeAux = head;
-		for (int i = 0; i < size; i++) {
-			if (nodeAux.getNext() == null) {
-				nodeAux.setNext(node);
+		LinkedNode<ValueType> auxNode = head;
+		for (; auxNode != null; auxNode = auxNode.getNext()) {
+			if (auxNode.getNext() == null) {
+				auxNode.setNext(node);
+				size++;
 				break;
-			} else {
-				nodeAux = nodeAux.getNext();
 			}
 		}
 
@@ -57,11 +70,28 @@ public class SingleLinkedList<ValueType> implements LinkedList<ValueType>, Seria
 		LinkedNode<ValueType> node = new LinkedNode<>();
 		node.setValue(value);
 		node.setNext(null);
+
 		return node;
 	}
 
 	@Override
 	public LinkedNode<ValueType> remove(ValueType value) {
 		return null;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder("head[");
+
+
+		LinkedNode<ValueType> auxNode = this.head;
+		builder.append(size).append("] -> ");
+		for (; auxNode != null; auxNode = auxNode.getNext()) {
+			ValueType value = auxNode.getValue();
+			builder.append("[").append(value.toString()).append("] -> ");
+		}
+		builder.append("end");
+
+		return builder.toString();
 	}
 }

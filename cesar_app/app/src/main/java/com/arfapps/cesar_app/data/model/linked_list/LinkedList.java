@@ -6,9 +6,13 @@ interface LinkedList<ValueType> {
 
 	Long getSize();
 
+	void updateSize();
+
 	boolean isEmpty();
 
 	LinkedNode<ValueType> addLast(ValueType value);
 
 	LinkedNode<ValueType> remove(ValueType value);
+
+	String toString();
 }
