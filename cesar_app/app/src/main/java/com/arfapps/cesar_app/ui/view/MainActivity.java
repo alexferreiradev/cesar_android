@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -75,6 +76,16 @@ public class MainActivity extends BaseActivity<Email, MainContract.View, MainCon
 		});
 
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.clean_duplicated_list:
+				mPresenter.cleanDuplicatedList();
+				break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

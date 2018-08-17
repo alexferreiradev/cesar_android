@@ -1,6 +1,7 @@
 package com.arfapps.cesar_app.repository;
 
 import com.arfapps.cesar_app.data.model.Email;
+import com.arfapps.cesar_app.data.model.linked_list.SingleLinkedList;
 import com.arfapps.cesar_app.util.StringUtil;
 
 import java.util.ArrayList;
@@ -75,5 +76,19 @@ public class ItemRepository implements DefaultRepository<Email> {
 		}
 
 		return emailListFiltered;
+	}
+
+	public SingleLinkedList<Email> getLinkedEmailThreadById(String emailThreadId) {
+		SingleLinkedList<Email> emailList = new SingleLinkedList<>();
+
+		for (Email email : emailsFake) {
+			emailList.addLast(email);
+		}
+
+		return emailList;
+	}
+
+	public void saveEmailThread(SingleLinkedList<Email> emailList, String emailThreadId) {
+		// Somente como fake para o servico de limpeza de duplicidade
 	}
 }

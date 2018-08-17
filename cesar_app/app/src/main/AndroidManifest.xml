@@ -4,6 +4,9 @@
           package="com.arfapps.cesar_app"
 		>
 
+	<!-- Precisa para versões antes do Android O. Servicos utilizam -->
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+
 	<application
 			android:allowBackup="true"
 			android:icon="@mipmap/ic_launcher"
@@ -21,6 +24,15 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
+
+		<service
+				android:name=".service.CleanerEmailService"
+				android:exported="true"
+				android:permission="android.permission.BIND_JOB_SERVICE, android.permission.WAKE_LOCK"
+				/>
+
+		<receiver android:name=".service.EmailBroadcastReceiver"/>
+
 	</application>
 
 </manifest>

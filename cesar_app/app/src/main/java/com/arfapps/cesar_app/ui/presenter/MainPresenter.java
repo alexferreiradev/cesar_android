@@ -1,11 +1,13 @@
 package com.arfapps.cesar_app.ui.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import com.arfapps.cesar_app.R;
 import com.arfapps.cesar_app.data.model.Email;
 import com.arfapps.cesar_app.repository.ItemRepository;
+import com.arfapps.cesar_app.service.CleanerEmailService;
 import com.arfapps.cesar_app.ui.view.contract.MainContract;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class MainPresenter extends BaseListPresenter<MainContract.View, Email, I
 	private static final String LOAD_EMAIL_BY_TITULO = "load_email_by_titulo";
 	private static final int PARAM_TASK_TYPE = 0;
 	private static final int PARAM_TASK_QUERY = 1;
+	private static final int CLEAN_EMAIL_LIST_JOB_ID = 100;
 
 	public MainPresenter(MainContract.View mView, Context mContext, Bundle savedInstanceState, ItemRepository mRepository) {
 		super(mView, mContext, savedInstanceState, mRepository);
@@ -61,5 +64,13 @@ public class MainPresenter extends BaseListPresenter<MainContract.View, Email, I
 	public void searchBy(String query) {
 		BackgroundTask task = new BackgroundTask();
 		task.execute(LOAD_EMAIL_BY_TITULO, query);
+	}
+
+	@Override
+	public void cleanDuplicatedList() {
+		Intent mServiceIntent = new Intent();
+		mServiceIntent.putExtra(CleanerEmailService.Constants.SERVICE_PARAM_KEY, "emailThreadIdFake");
+
+		CleanerEmailService.enqueueWork(mContext, CleanerEmailService.class, CLEAN_EMAIL_LIST_JOB_ID, mServiceIntent);
 	}
 }
