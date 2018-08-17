@@ -3,4 +3,5 @@
 	<string name="n_carregado">não carregado</string>
 	<string name="item_search_menu_title">Pesquisar</string>
 	<string name="item_not_loaded">Não há mensagens</string>
+	<string name="clean_duplicated_list_menu_title">Limpar emails duplicados</string>
 </resources>

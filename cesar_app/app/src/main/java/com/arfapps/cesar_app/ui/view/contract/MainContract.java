@@ -6,6 +6,8 @@ public interface MainContract {
 
 	interface Presenter extends BaseListContract.Presenter<Email> {
 		void searchBy(String query);
+
+		void cleanDuplicatedList();
 		// Ignorado
 	}
 

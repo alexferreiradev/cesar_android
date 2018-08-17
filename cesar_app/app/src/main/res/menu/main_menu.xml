@@ -8,7 +8,14 @@
 			android:id="@+id/search_item_button"
 			android:title="@string/item_search_menu_title"
 			app:actionViewClass="android.support.v7.widget.SearchView"
-			app:showAsAction="always"
+			app:showAsAction="ifRoom|always"
+			/>
+
+	<item
+			android:id="@+id/clean_duplicated_list"
+			app:showAsAction="never"
+			android:title="@string/clean_duplicated_list_menu_title"
+
 			/>
 
 </menu>
