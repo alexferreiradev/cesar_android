@@ -29,17 +29,13 @@ public final class EmailUtils {
 				LinkedNode<Email> prevNode = auxNode;
 				for (; next != null; next = next.getNext()) {
 					if (isDuplicatedEmail(auxNode.getValue(), next.getValue())) {
-//						System.out.println(String.format("valor é igual aux: %s, next: %s", auxNode.getValue().getTitle(), next.getValue().getTitle()));
 						if (next.getNext() != null) {
-//							System.out.println(String.format("set %s -> %s", prevNode.getValue().getTitle(), next.getNext().getValue().getTitle()));
 							prevNode.setNext(next.getNext());
 						} else {
-//							System.out.println(String.format("set %s -> null", prevNode.getValue().getTitle()));
 							prevNode.setNext(null); // Final da lista
 						}
 					} else {
-						prevNode = next;
-//						System.out.println(String.format("valor nao é igual aux: %s, next: %s", auxNode.getValue().getTitle(), next.getValue().getTitle()));
+						prevNode = next; // atualiza prev somente para nao iguais
 					}
 				}
 			}
