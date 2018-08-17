@@ -40,8 +40,8 @@ public class LinkedNode<ValueType> {
 	@Override
 	public String toString() {
 		return "LinkedNode{" +
-				"next=" + next +
-				", value=" + value +
+				" value=" + value +
+				", next=" + next +
 				'}';
 	}
 }
