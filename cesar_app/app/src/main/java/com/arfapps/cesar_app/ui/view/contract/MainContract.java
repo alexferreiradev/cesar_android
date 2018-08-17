@@ -1,14 +1,15 @@
 package com.arfapps.cesar_app.ui.view.contract;
 
-import com.arfapps.cesar_app.data.model.ItemList;
+import com.arfapps.cesar_app.data.model.Email;
 
 public interface MainContract {
 
-	interface Presenter extends BaseListContract.Presenter<ItemList> {
+	interface Presenter extends BaseListContract.Presenter<Email> {
+		void searchBy(String query);
 		// Ignorado
 	}
 
-	interface View extends BaseListContract.View<ItemList> {
+	interface View extends BaseListContract.View<Email> {
 		// Ignorado
 	}
 }

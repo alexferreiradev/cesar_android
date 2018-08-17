@@ -34,6 +34,7 @@ public class StringUtilTest {
 				{"despite", 		"desptie", 					"true"},
 				{"moon", 			"nmoo", 					"false"},
 				{"misspellings",	"mpeissngslli", 			"false"},
+				{"titulo1",			"teste", 					"true"},
 		};
 
 		for(String[] stringData: dataList){
