@@ -45,6 +45,27 @@ public final class EmailUtils {
 		return emailList;
 	}
 
+	/**
+	 * Encontra o nó que tem a mesma referencia que o nó de outra lista tem.
+	 *
+	 * @param firstList  - primeira lista
+	 * @param secondList - a lista que sera verificado elemento a elemento se possue mesma ref que da primeira lista.
+	 * @return primeiro nó que ambas listas possuem mesma referencia
+	 */
+	public static LinkedNode<Email> findIntersectionBetween(SingleLinkedList<Email> firstList, SingleLinkedList<Email> secondList) {
+		LinkedNode<Email> head = firstList.getHead();
+		LinkedNode<Email> secondHead = secondList.getHead();
+		for (; head != null && secondHead != null; head = head.getNext(), secondHead = secondList.getHead()) {
+			for (; secondHead != null; secondHead = secondHead.getNext()) {
+				if (head.getNext() == secondHead.getNext()) {
+					return head.getNext();
+				}
+			}
+		}
+
+		return null;
+	}
+
 	private static boolean isDuplicatedEmail(Email actual, Email compare) {
 		return actual.equals(compare);
 	}
